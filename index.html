@@ -154,8 +154,8 @@ h1,h2,h3{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:
 .hero{
   position:relative;
   display:flex;align-items:center;
-  padding-top:calc(var(--header-h) + 28px);
-  padding-bottom:40px;
+  padding-top:calc(var(--header-h) + 20px);
+  padding-bottom:20px;
   overflow:hidden;
   isolation:isolate;
 }
@@ -166,7 +166,7 @@ h1,h2,h3{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:
   position:absolute;right:-10%;top:50%;
   width:min(700px,90vw);
   transform:translateY(-50%);
-  opacity:.09;filter:grayscale(.4) brightness(1.35) contrast(.9) saturate(1.1);
+  opacity:.16;filter:grayscale(.15) brightness(1.15) contrast(1.15) saturate(1.6);
   pointer-events:none;z-index:-1;will-change:transform;
 }
 .hero-frame{position:relative;padding:8px 0}
@@ -193,15 +193,16 @@ h1,h2,h3{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:
 .rating-badge:hover,.rating-badge:focus-visible{border-color:var(--gold);background:rgba(201,162,75,.1)}
 .rating-badge:active{transform:scale(.97)}
 .stars{display:inline-flex;gap:3px}
-.star{position:relative;width:16px;height:16px;color:rgba(255,255,255,.16)}
-.star svg{width:100%;height:100%;display:block;fill:currentColor}
+.star{--s:16px;position:relative;width:var(--s);height:var(--s);color:rgba(255,255,255,.16)}
+.star svg{width:var(--s);height:var(--s);display:block;fill:currentColor;flex-shrink:0}
 .star .fill{position:absolute;inset:0;overflow:hidden;width:var(--fill,100%);color:var(--gold)}
 .rating-text{font-size:.85rem;font-weight:700;color:var(--text)}
 .rating-text b{color:var(--gold);font-size:1rem}
 .rating-text small{display:block;color:var(--text-dim);font-weight:500;font-size:.78rem;margin-top:2px}
 
 /* ===== ABOUT ===== */
-.about{padding-block:80px}
+.about{padding-top:44px;padding-bottom:64px}
+@media (min-width:900px){ .about{padding-top:80px;padding-bottom:80px} }
 .about-text{max-width:66ch;font-size:clamp(1.02rem,2.6vw,1.18rem);color:#d9d7d0}
 
 /* ===== SERVICES ===== */
@@ -229,7 +230,7 @@ h1,h2,h3{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:
 .reviews-score{font-family:'Anton',sans-serif;font-size:clamp(4.5rem,22vw,8rem);color:var(--gold);line-height:.85}
 .reviews-score sup{font-family:'Inter',sans-serif;font-weight:700;font-size:1.6rem;color:var(--text-dim);vertical-align:super}
 .reviews-stars{display:flex;justify-content:center;margin-top:10px}
-.reviews-stars .star{width:26px;height:26px}
+.reviews-stars .star{--s:26px}
 .reviews-count{margin-top:14px;font-size:1.05rem;color:var(--text-dim);font-weight:600}
 .reviews-count b{color:var(--text);font-weight:800}
 .reviews-cta{margin-top:30px}
@@ -665,7 +666,7 @@ h1,h2,h3{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:
     var pTicking = false;
     function parallax(){
       if(!heroInView){ pTicking = false; return; }
-      var y = window.scrollY * 0.24;
+      var y = window.scrollY * 0.36;
       watermark.style.transform = 'translateY(calc(-50% + ' + y + 'px))';
       pTicking = false;
     }
