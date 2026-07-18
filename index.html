@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jokers Barber — Pánské holičství Liberec</title>
+<meta name="description" content="Jokers Barber — pánské holičství v centru Liberce (Fügnerova 7). Barber střihy, dětské střihy, úprava vousů. Hodnocení 4.8/5. Rezervujte online přes Reservio.">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="https://reservio-static-production.s3.eu-central-1.amazonaws.com/businesses/27093ebf-31e6-41a4-814c-6861fba3d9c6.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0c;
+  --bg-alt:#151517;
+  --bg-card:#18181b;
+  --gold:#C9A24B;
+  --gold-light:#e4c578;
+  --text:#f4f2ec;
+  --text-dim:#9b9a9e;
+  --line:rgba(201,162,75,.16);
+  --line-strong:rgba(201,162,75,.5);
+  --header-h:68px;
+  --ease:cubic-bezier(.16,.84,.44,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:var(--header-h)}
+@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',system-ui,sans-serif;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  background-image:repeating-linear-gradient(135deg, rgba(201,162,75,.025) 0 1px, transparent 1px 42px);
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
+ul{list-style:none}
+h1,h2,h3{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:.92;font-weight:400}
+.container{width:100%;max-width:1240px;margin-inline:auto;padding-inline:20px}
+@media (min-width:640px){ .container{padding-inline:32px} }
+@media (min-width:1000px){ .container{padding-inline:48px} }
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+.skip-link{position:fixed;top:-100px;left:12px;z-index:999;background:var(--gold);color:#0b0b0c;padding:12px 18px;font-weight:700;border-radius:2px;transition:top .2s var(--ease)}
+.skip-link:focus{top:12px}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:48px;padding:0 26px;
+  font-weight:700;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;
+  border-radius:2px;border:1px solid transparent;
+  transition:transform .15s var(--ease), box-shadow .2s var(--ease), background-color .2s var(--ease), color .2s var(--ease);
+  -webkit-tap-highlight-color:transparent;
+  white-space:nowrap;
+}
+.btn:active{transform:scale(.95)}
+.btn-gold{background:var(--gold);color:#0b0b0c}
+.btn-gold:hover,.btn-gold:focus-visible{background:var(--gold-light);box-shadow:5px 5px 0 rgba(201,162,75,.25)}
+.btn-outline{background:transparent;color:var(--text);border-color:var(--line-strong)}
+.btn-outline:hover,.btn-outline:focus-visible{border-color:var(--gold);color:var(--gold);box-shadow:4px 4px 0 rgba(201,162,75,.15)}
+.btn-block{width:100%}
+.btn-lg{min-height:58px;padding:0 34px;font-size:1.05rem}
+
+/* Reveal / scroll animations (progressive enhancement only when JS present) */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.js .reveal.in-view{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* Section heading + underline */
+.section-head{position:relative;margin-bottom:36px}
+.section-eyebrow{display:flex;align-items:center;gap:10px;color:var(--gold);font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+.section-eyebrow::before{content:"";width:26px;height:1px;background:var(--gold)}
+.section-title{font-size:clamp(2.1rem,8vw,3.6rem)}
+.section-underline{position:relative;height:3px;width:64px;background:rgba(201,162,75,.25);margin-top:18px;overflow:hidden;border-radius:1px}
+.section-underline::after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(1);transform-origin:left;transition:transform .8s var(--ease) .1s}
+.js .reveal .section-underline::after{transform:scaleX(0)}
+.js .reveal.in-view .section-underline::after{transform:scaleX(1)}
+
+/* ===== HEADER ===== */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--header-h);
+  display:flex;align-items:center;
+  background:rgba(11,11,12,.55);
+  border-bottom:1px solid rgba(201,162,75,.08);
+  transition:height .3s var(--ease), background-color .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+@supports (backdrop-filter: blur(1px)){
+  .site-header{backdrop-filter:blur(0px)}
+}
+.site-header.is-scrolled{
+  height:56px;
+  background:rgba(11,11,12,.86);
+  border-color:rgba(201,162,75,.18);
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+@supports (backdrop-filter: blur(1px)){
+  .site-header.is-scrolled{backdrop-filter:blur(14px)}
+}
+.header-inner{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo-link{display:flex;align-items:center;flex-shrink:0}
+.logo-img{height:36px;width:auto;transition:height .3s var(--ease)}
+.site-header.is-scrolled .logo-img{height:30px}
+.main-nav{display:none}
+.main-nav a{
+  position:relative;font-weight:600;font-size:.95rem;letter-spacing:.02em;color:var(--text-dim);
+  padding:8px 2px;transition:color .2s var(--ease)
+}
+.main-nav a::after{content:"";position:absolute;left:0;bottom:2px;height:1px;width:0;background:var(--gold);transition:width .25s var(--ease)}
+.main-nav a:hover,.main-nav a:focus-visible{color:var(--text)}
+.main-nav a:hover::after,.main-nav a:focus-visible::after{width:100%}
+.header-actions{display:flex;align-items:center;gap:14px}
+.btn-header{display:none}
+.burger{
+  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:5px;flex-shrink:0;
+}
+.burger span{width:22px;height:2px;background:var(--text);transition:transform .3s var(--ease), opacity .3s var(--ease)}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.mobile-menu{
+  position:fixed;inset:0;z-index:190;
+  background:#0b0b0c;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transform:translateY(-12px);
+  transition:opacity .3s var(--ease), transform .3s var(--ease), visibility 0s linear .3s;
+}
+.mobile-menu.is-open{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .3s var(--ease), transform .3s var(--ease)}
+.mobile-menu nav{display:flex;flex-direction:column;align-items:center;gap:26px;padding:20px}
+.mobile-menu a{font-family:'Anton',sans-serif;font-size:2.1rem;text-transform:uppercase;letter-spacing:.01em;opacity:0;transform:translateY(14px);transition:opacity .4s var(--ease), transform .4s var(--ease)}
+.mobile-menu.is-open a{opacity:1;transform:translateY(0)}
+.mobile-menu a:nth-child(1){transition-delay:.08s}
+.mobile-menu a:nth-child(2){transition-delay:.14s}
+.mobile-menu a:nth-child(3){transition-delay:.2s}
+.mobile-menu a:nth-child(4){transition-delay:.26s}
+.mobile-menu a.btn{transition-delay:.32s;font-family:'Inter',sans-serif;font-size:1rem;margin-top:8px}
+@media (prefers-reduced-motion:reduce){
+  .mobile-menu, .mobile-menu a{transition:none!important}
+}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;align-items:center;
+  padding-top:calc(var(--header-h) + 28px);
+  padding-bottom:56px;
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero-watermark{
+  position:absolute;right:-10%;top:50%;
+  width:min(700px,90vw);
+  transform:translateY(-50%);
+  opacity:.05;filter:grayscale(1) brightness(2);
+  pointer-events:none;z-index:-1;will-change:transform;
+}
+.hero-frame{position:relative;padding:8px 0}
+.hero-frame::before,.hero-frame::after{
+  content:"";position:absolute;width:26px;height:26px;border-color:var(--gold);opacity:.55;
+}
+.hero-frame::before{top:-8px;left:-2px;border-top:2px solid;border-left:2px solid}
+.hero-frame::after{bottom:-8px;right:-2px;border-bottom:2px solid;border-right:2px solid}
+.hero-eyebrow{color:var(--gold);font-weight:700;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:"";width:26px;height:1px;background:var(--gold)}
+.hero-title{font-size:clamp(3.1rem,15vw,7.6rem);letter-spacing:-.01em}
+.hero-title span{display:block;color:var(--gold)}
+.hero-slogan{margin-top:20px;max-width:34ch;font-size:clamp(1.05rem,3.6vw,1.3rem);color:var(--text);font-weight:500}
+.hero-location{margin-top:14px;display:flex;align-items:center;gap:8px;color:var(--text-dim);font-weight:600;font-size:.95rem;letter-spacing:.02em}
+.hero-location svg{width:15px;height:15px;flex-shrink:0;color:var(--gold)}
+.hero-actions{margin-top:34px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+
+.rating-badge{
+  display:inline-flex;align-items:center;gap:12px;
+  border:1px solid var(--line-strong);border-radius:2px;
+  padding:12px 18px;background:rgba(201,162,75,.05);
+  transition:border-color .2s var(--ease), background-color .2s var(--ease), transform .15s var(--ease);
+}
+.rating-badge:hover,.rating-badge:focus-visible{border-color:var(--gold);background:rgba(201,162,75,.1)}
+.rating-badge:active{transform:scale(.97)}
+.stars{display:inline-flex;gap:3px}
+.star{position:relative;width:16px;height:16px;color:rgba(255,255,255,.16)}
+.star svg{width:100%;height:100%;display:block}
+.star .fill{position:absolute;inset:0;overflow:hidden;width:var(--fill,100%);color:var(--gold)}
+.rating-text{font-size:.85rem;font-weight:700;color:var(--text)}
+.rating-text b{color:var(--gold);font-size:1rem}
+.rating-text small{display:block;color:var(--text-dim);font-weight:500;font-size:.78rem;margin-top:2px}
+
+/* ===== ABOUT ===== */
+.about{padding-block:80px}
+.about-text{max-width:66ch;font-size:clamp(1.02rem,2.6vw,1.18rem);color:#d9d7d0}
+
+/* ===== SERVICES ===== */
+.services{padding-block:80px;background:var(--bg-alt);position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.services-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:8px}
+@media (min-width:640px){ .services-grid{grid-template-columns:1fr 1fr} }
+@media (min-width:1000px){ .services-grid{grid-template-columns:repeat(3,1fr)} }
+.service-card{
+  position:relative;background:var(--bg-card);border:1px solid var(--line);border-radius:2px;
+  padding:26px 22px;display:flex;flex-direction:column;gap:14px;
+  transition:border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.service-card:hover,.service-card:focus-within,.service-card.is-active{
+  border-color:var(--gold);transform:translateY(-4px);box-shadow:6px 6px 0 rgba(201,162,75,.14);
+}
+.service-num{position:absolute;top:14px;right:18px;font-family:'Anton',sans-serif;font-size:1.6rem;color:rgba(201,162,75,.14)}
+.service-card h3{font-family:'Inter',sans-serif;text-transform:none;font-weight:800;font-size:1.15rem;letter-spacing:0;line-height:1.25;max-width:80%}
+.service-price{color:var(--gold);font-family:'Anton',sans-serif;font-size:2rem;letter-spacing:0}
+.service-duration{color:var(--text-dim);font-size:.85rem;font-weight:600;letter-spacing:.02em;margin-top:-10px}
+.service-card .btn{margin-top:auto}
+.services-more{margin-top:34px;text-align:center}
+
+/* ===== REVIEWS ===== */
+.reviews{padding-block:90px;text-align:center}
+.reviews-score{font-family:'Anton',sans-serif;font-size:clamp(4.5rem,22vw,8rem);color:var(--gold);line-height:.85}
+.reviews-score sup{font-family:'Inter',sans-serif;font-weight:700;font-size:1.6rem;color:var(--text-dim);vertical-align:super}
+.reviews-stars{display:flex;justify-content:center;margin-top:10px}
+.reviews-stars .star{width:26px;height:26px}
+.reviews-count{margin-top:14px;font-size:1.05rem;color:var(--text-dim);font-weight:600}
+.reviews-count b{color:var(--text);font-weight:800}
+.reviews-cta{margin-top:30px}
+
+/* ===== HOURS ===== */
+.hours{padding-block:80px;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hours-status{display:inline-flex;align-items:center;gap:8px;margin-bottom:26px;font-weight:700;font-size:.85rem;letter-spacing:.03em;text-transform:uppercase;color:var(--text-dim)}
+.hours-status .dot{width:8px;height:8px;border-radius:50%;background:var(--text-dim)}
+.hours-status.is-open{color:var(--gold)}
+.hours-status.is-open .dot{background:#79c98a;box-shadow:0 0 0 0 rgba(121,201,138,.5)}
+.js .hours-status.is-open .dot{animation:dotpulse 2s infinite}
+@keyframes dotpulse{
+  0%{box-shadow:0 0 0 0 rgba(121,201,138,.45)}
+  70%{box-shadow:0 0 0 7px rgba(121,201,138,0)}
+  100%{box-shadow:0 0 0 0 rgba(121,201,138,0)}
+}
+.hours-grid{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:800px){ .hours-grid{grid-template-columns:repeat(7,1fr);gap:10px} }
+.hour-card{
+  background:var(--bg-card);border:1px solid var(--line);border-radius:2px;padding:18px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  transition:border-color .3s var(--ease), background-color .3s var(--ease);
+}
+@media (min-width:800px){ .hour-card{flex-direction:column;align-items:flex-start;justify-content:flex-start;min-height:150px} }
+.hour-card .day{font-family:'Anton',sans-serif;font-size:1.2rem;color:var(--text)}
+.hour-card .time{color:var(--text-dim);font-size:.85rem;font-weight:600;text-align:right}
+@media (min-width:800px){ .hour-card .time{text-align:left;margin-top:auto} }
+.hour-card .time span{display:block}
+.hour-card.is-today{border-color:var(--gold);background:linear-gradient(160deg, rgba(201,162,75,.12), rgba(201,162,75,.02))}
+.hour-card.is-today .day{color:var(--gold)}
+.hour-card.is-today .day::after{content:" •";color:var(--gold)}
+
+/* ===== CONTACT ===== */
+.contact{padding-block:90px}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:30px}
+@media (min-width:900px){ .contact-grid{grid-template-columns:1.1fr .9fr;gap:50px} }
+.contact-list{display:flex;flex-direction:column;gap:22px}
+.contact-item{display:flex;gap:16px;align-items:flex-start}
+.contact-item .icon{width:44px;height:44px;flex-shrink:0;border:1px solid var(--line-strong);border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--gold)}
+.contact-item .icon svg{width:20px;height:20px}
+.contact-item h3{font-family:'Inter',sans-serif;text-transform:none;font-weight:800;font-size:1rem;letter-spacing:0}
+.contact-item p,.contact-item a.link{color:var(--text-dim);font-weight:500}
+.contact-item a.link{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:4px;transition:color .2s var(--ease), text-decoration-color .2s var(--ease)}
+.contact-item a.link:hover,.contact-item a.link:focus-visible{color:var(--gold);text-decoration-color:var(--gold)}
+.map-card{background:var(--bg-card);border:1px solid var(--line);border-radius:2px;padding:30px 26px;display:flex;flex-direction:column;gap:16px}
+.map-card h3{font-size:1.5rem}
+.map-card p{color:var(--text-dim);font-size:.92rem}
+
+/* ===== FOOTER ===== */
+.site-footer{padding:38px 0;border-top:1px solid var(--line);text-align:center}
+.site-footer .logo-img{height:26px;margin-inline:auto;opacity:.8}
+.site-footer p{margin-top:14px;color:var(--text-dim);font-size:.82rem}
+.site-footer a{text-decoration:underline;text-decoration-color:var(--line-strong)}
+
+/* ===== FLOATING CTA ===== */
+.floating-cta{
+  position:fixed;right:16px;bottom:16px;z-index:150;
+  display:inline-flex;align-items:center;gap:8px;
+  min-height:52px;padding:0 22px;border-radius:2px;
+  background:var(--gold);color:#0b0b0c;font-weight:800;text-transform:uppercase;letter-spacing:.03em;font-size:.9rem;
+  box-shadow:0 10px 26px rgba(0,0,0,.4);
+  opacity:0;visibility:hidden;transform:translateY(14px) scale(.96);
+  transition:opacity .3s var(--ease), transform .3s var(--ease), visibility 0s linear .3s;
+}
+.floating-cta.is-visible{opacity:1;visibility:visible;transform:translateY(0) scale(1);transition:opacity .3s var(--ease), transform .3s var(--ease)}
+.floating-cta:active{transform:scale(.94)}
+.floating-cta::before{
+  content:"";position:absolute;inset:0;border-radius:2px;border:1px solid var(--gold);
+  animation:pulsering 2.4s var(--ease) infinite;
+}
+@keyframes pulsering{
+  0%{transform:scale(1);opacity:.6}
+  100%{transform:scale(1.35);opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .floating-cta::before{animation:none;display:none}
+  .floating-cta,.hours-status .dot{transition:none}
+}
+
+@media (min-width:900px){
+  .main-nav{display:flex;gap:32px}
+  .btn-header{display:inline-flex}
+  .burger{display:none}
+  .mobile-menu{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#hlavni-obsah">Přeskočit na obsah</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#top" class="logo-link" aria-label="Jokers Barber — úvod">
+      <img class="logo-img" src="https://reservio-static-production.s3.eu-central-1.amazonaws.com/businesses/27093ebf-31e6-41a4-814c-6861fba3d9c6.png" alt="Jokers Barber" width="160" height="44" fetchpriority="high" decoding="async">
+    </a>
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <a href="#sluzby">Služby</a>
+      <a href="#recenze">Recenze</a>
+      <a href="#o-nas">O nás</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-gold btn-header" href="https://jokers-barber.reservio.com" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+      <button class="burger" id="burgerBtn" aria-label="Otevřít menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <nav aria-label="Mobilní navigace">
+    <a href="#sluzby">Služby</a>
+    <a href="#recenze">Recenze</a>
+    <a href="#o-nas">O nás</a>
+    <a href="#kontakt">Kontakt</a>
+    <a class="btn btn-gold" href="https://jokers-barber.reservio.com" target="_blank" rel="noopener noreferrer">Rezervovat termín</a>
+  </nav>
+</div>
+
+<main id="hlavni-obsah">
+
+  <section class="hero" id="top">
+    <img class="hero-watermark" id="heroWatermark" src="https://reservio-static-production.s3.eu-central-1.amazonaws.com/businesses/27093ebf-31e6-41a4-814c-6861fba3d9c6.png" alt="" aria-hidden="true" decoding="async" fetchpriority="low">
+    <div class="container">
+      <div class="hero-frame">
+        <p class="hero-eyebrow">Pánské holičství · Liberec</p>
+        <h1 class="hero-title">JOKERS<span>BARBER</span></h1>
+        <p class="hero-slogan">Preciznost a spokojenost zákazníka je pro nás prioritou.</p>
+        <p class="hero-location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Fügnerova 7, Liberec
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-gold btn-lg" href="https://jokers-barber.reservio.com" target="_blank" rel="noopener noreferrer">Rezervovat termín</a>
+          <a class="rating-badge" href="https://jokers-barber.reservio.com/reviews" target="_blank" rel="noopener noreferrer" aria-label="Hodnocení 4.8 z 5, 84 recenzí — zobrazit recenze">
+            <span class="stars" aria-hidden="true">
+              <span class="star" style="--fill:100%"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg><span class="fill"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg></span></span>
+              <span class="star" style="--fill:100%"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg><span class="fill"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg></span></span>
+              <span class="star" style="--fill:100%"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg><span class="fill"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg></span></span>
+              <span class="star" style="--fill:100%"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg><span class="fill"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg></span></span>
+              <span class="star" style="--fill:80%"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg><span class="fill"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg></span></span>
+            </span>
+            <span class="rating-text"><b>4.8</b>/5 <small>84 recenzí</small></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="o-nas">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">O nás</p>
+        <h2 class="section-title">Řemeslo se srdcem</h2>
+        <div class="section-underline"></div>
+      </div>
+      <p class="about-text reveal">
+        Jsme panské holičství v centru Liberce, které je zaměřené na pánské a dětské Barber
+        střihy, avšak nabízíme i obyčejné a klasické střihy pro nenáročné. Jsme kreativní
+        a poradíme si s jakoukoliv výzvou a přáním klienta. Pánové s plnovousem se u nás
+        nemusí bát o svou chloubu, avšak i pánové se strništěm si přijdou na své. Naše
+        dětské střihy nemají konkurenci široko daleko.
+      </p>
+    </div>
+  </section>
+
+  <section class="services" id="sluzby">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">Nabídka</p>
+        <h2 class="section-title">Služby</h2>
+        <div class="section-underline"></div>
+      </div>
+      <div class="services-grid" id="servicesGrid">
+
+        <article class="service-card reveal">
+          <span class="service-num" aria-hidden="true">01</span>
+          <h3>Dětský střih</h3>
+          <p class="service-price">250 Kč</p>
+          <p class="service-duration">30 min</p>
+          <a class="btn btn-outline btn-block" href="https://jokers-barber.reservio.com/services/c80fb8f8-2def-4d87-839b-56274bcbed93" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num" aria-hidden="true">02</span>
+          <h3>Klasický střih</h3>
+          <p class="service-price">300 Kč</p>
+          <a class="btn btn-outline btn-block" href="https://jokers-barber.reservio.com/services/36b02bc5-83e8-450d-a4a8-8bf4d5443bf7" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num" aria-hidden="true">03</span>
+          <h3>Barber střih</h3>
+          <p class="service-price">400 Kč</p>
+          <a class="btn btn-outline btn-block" href="https://jokers-barber.reservio.com/services/3ba9229d-196d-41a7-bb0f-558d97108fd8" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num" aria-hidden="true">04</span>
+          <h3>Barber střih + úprava vousů</h3>
+          <p class="service-price">550 Kč</p>
+          <a class="btn btn-outline btn-block" href="https://jokers-barber.reservio.com/services/991ccc85-0def-44b3-a74c-079da7155abf" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num" aria-hidden="true">05</span>
+          <h3>Full service</h3>
+          <p class="service-price">800 Kč</p>
+          <a class="btn btn-outline btn-block" href="https://jokers-barber.reservio.com/services/40489055-1dda-4427-82a6-cf304287527a" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num" aria-hidden="true">06</span>
+          <h3>Úprava vousů</h3>
+          <p class="service-price">200 Kč</p>
+          <a class="btn btn-outline btn-block" href="https://jokers-barber.reservio.com/services/44d2e280-4194-48ee-b26a-ad6daeefe67a" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num" aria-hidden="true">07</span>
+          <h3>Barvení vousů</h3>
+          <p class="service-price">200 Kč</p>
+          <a class="btn btn-outline btn-block" href="https://jokers-barber.reservio.com/services/796ab9b8-b21f-4bc9-bd3a-9a38efb8d99d" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num" aria-hidden="true">08</span>
+          <h3>Barber střih + úprava a barvení vousů</h3>
+          <p class="service-price">700 Kč</p>
+          <a class="btn btn-outline btn-block" href="https://jokers-barber.reservio.com/services/2bc8526b-a2ee-4a8c-af5c-b8fa6bd3f424" target="_blank" rel="noopener noreferrer">Rezervovat</a>
+        </article>
+
+      </div>
+      <div class="services-more reveal">
+        <a class="btn btn-outline" href="https://jokers-barber.reservio.com/services" target="_blank" rel="noopener noreferrer">Zobrazit všechny služby</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="recenze">
+    <div class="container">
+      <div class="section-head reveal" style="text-align:center">
+        <p class="section-eyebrow" style="justify-content:center">Reference</p>
+        <h2 class="section-title">Recenze</h2>
+        <div class="section-underline" style="margin-inline:auto"></div>
+      </div>
+      <div class="reveal">
+        <p class="reviews-score"><span id="scoreNumber" data-target="4.8">0.0</span><sup>/5</sup></p>
+        <div class="reviews-stars" aria-hidden="true">
+          <span class="star" style="--fill:100%"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg><span class="fill"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg></span></span>
+          <span class="star" style="--fill:100%"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg><span class="fill"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg></span></span>
+          <span class="star" style="--fill:100%"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg><span class="fill"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg></span></span>
+          <span class="star" style="--fill:100%"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg><span class="fill"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg></span></span>
+          <span class="star" style="--fill:80%"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg><span class="fill"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg></span></span>
+        </div>
+        <p class="reviews-count"><b id="reviewsCount" data-target="84">0</b> recenzí od spokojených zákazníků</p>
+        <div class="reviews-cta">
+          <a class="btn btn-outline" href="https://jokers-barber.reservio.com/reviews" target="_blank" rel="noopener noreferrer">Zobrazit všechny recenze</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hours" id="oteviraci-doba">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">Provozní doba</p>
+        <h2 class="section-title">Otevírací doba</h2>
+        <div class="section-underline"></div>
+      </div>
+      <p class="hours-status reveal" id="hoursStatus"><span class="dot"></span> <span id="hoursStatusText">Načítám…</span></p>
+      <div class="hours-grid reveal" id="hoursGrid">
+        <div class="hour-card" data-day="1"><span class="day">Po</span><span class="time"><span>9:00–11:30</span><span>12:30–17:00</span></span></div>
+        <div class="hour-card" data-day="2"><span class="day">Út</span><span class="time"><span>9:00–11:30</span><span>12:30–16:00</span></span></div>
+        <div class="hour-card" data-day="3"><span class="day">St</span><span class="time"><span>9:00–11:30</span><span>12:30–16:00</span></span></div>
+        <div class="hour-card" data-day="4"><span class="day">Čt</span><span class="time"><span>9:00–11:30</span><span>12:30–18:00</span></span></div>
+        <div class="hour-card" data-day="5"><span class="day">Pá</span><span class="time"><span>9:00–11:30</span><span>12:30–18:00</span></span></div>
+        <div class="hour-card" data-day="6"><span class="day">So</span><span class="time">Zavřeno</span></div>
+        <div class="hour-card" data-day="0"><span class="day">Ne</span><span class="time">Zavřeno</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">Najdete nás</p>
+        <h2 class="section-title">Kontakt</h2>
+        <div class="section-underline"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-list reveal">
+          <div class="contact-item">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+            <div>
+              <h3>Adresa</h3>
+              <p>Fügnerova 7, Liberec<br>OC LBC Delta, 2. patro, kadeřnictví Freeline</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.66 2.64a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.44-1.43a2 2 0 0 1 2.11-.45c.85.32 1.74.54 2.64.66A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div>
+              <h3>Telefon</h3>
+              <p><a class="link" href="tel:+420608421082">+420 608 421 082</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span>
+            <div>
+              <h3>Facebook</h3>
+              <p><a class="link" href="https://www.facebook.com/profile.php?id=100088977876345" target="_blank" rel="noopener noreferrer">Jokers Barber na Facebooku</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="map-card reveal">
+          <h3>Zajděte za námi</h3>
+          <p>Najdeme pro vás nejrychlejší trasu na Fügnerovu 7 v Liberci.</p>
+          <a class="btn btn-gold btn-block" href="https://www.google.com/maps/dir/?api=1&destination=50.7661234%2C15.0573485" target="_blank" rel="noopener noreferrer">Vyhledat trasu</a>
+          <a class="btn btn-outline btn-block" href="https://jokers-barber.reservio.com" target="_blank" rel="noopener noreferrer">Rezervovat termín</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <img class="logo-img" src="https://reservio-static-production.s3.eu-central-1.amazonaws.com/businesses/27093ebf-31e6-41a4-814c-6861fba3d9c6.png" alt="Jokers Barber" loading="lazy" decoding="async">
+    <p>Fügnerova 7, Liberec · <a href="tel:+420608421082">+420 608 421 082</a> · <span id="footerYear"></span> Jokers Barber. Rezervace přes <a href="https://jokers-barber.reservio.com" target="_blank" rel="noopener noreferrer">Reservio</a>.</p>
+  </div>
+</footer>
+
+<a class="floating-cta" id="floatingCta" href="https://jokers-barber.reservio.com" target="_blank" rel="noopener noreferrer" aria-label="Rezervovat termín">Rezervovat</a>
+
+<script>
+(function(){
+  "use strict";
+  document.addEventListener('touchstart', function(){}, {passive:true});
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Header shrink on scroll */
+  var header = document.getElementById('siteHeader');
+  var ticking = false;
+  function onScroll(){
+    if(!ticking){
+      window.requestAnimationFrame(function(){
+        header.classList.toggle('is-scrolled', window.scrollY > 12);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* Mobile menu */
+  var burger = document.getElementById('burgerBtn');
+  var menu = document.getElementById('mobileMenu');
+  function closeMenu(){
+    menu.classList.remove('is-open');
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+  burger.addEventListener('click', function(){
+    var open = menu.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+
+  /* Reveal on scroll, staggered per section */
+  document.querySelectorAll('.services-grid, .contact-list, .contact-grid').forEach(function(group){
+    Array.prototype.forEach.call(group.children, function(el, i){
+      if(el.classList.contains('reveal')) el.style.transitionDelay = Math.min(i * 70, 420) + 'ms';
+    });
+  });
+
+  var revealItems = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+    revealItems.forEach(function(el){ io.observe(el); });
+  } else {
+    revealItems.forEach(function(el){ el.classList.add('in-view'); });
+  }
+
+  /* Animated counters (rating + review count) */
+  function animateCount(el, decimals){
+    var target = parseFloat(el.getAttribute('data-target'));
+    if(reduceMotion){ el.textContent = decimals ? target.toFixed(1) : target; return; }
+    var start = null, duration = 1300;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = target * eased;
+      el.textContent = decimals ? val.toFixed(1) : Math.round(val);
+      if(p < 1) window.requestAnimationFrame(step);
+    }
+    window.requestAnimationFrame(step);
+  }
+  var reviewsSection = document.getElementById('recenze');
+  if(reviewsSection && 'IntersectionObserver' in window){
+    var countObserved = false;
+    var countIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting && !countObserved){
+          countObserved = true;
+          animateCount(document.getElementById('scoreNumber'), true);
+          animateCount(document.getElementById('reviewsCount'), false);
+          countIo.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.4});
+    countIo.observe(reviewsSection);
+  }
+
+  /* Hero parallax watermark (scroll-driven, works with touch scroll) */
+  var watermark = document.getElementById('heroWatermark');
+  var heroEl = document.getElementById('top');
+  var heroInView = true;
+  if(!reduceMotion && watermark){
+    var pTicking = false;
+    function parallax(){
+      if(!heroInView){ pTicking = false; return; }
+      var y = window.scrollY * 0.12;
+      watermark.style.transform = 'translateY(calc(-50% + ' + y + 'px))';
+      pTicking = false;
+    }
+    window.addEventListener('scroll', function(){
+      if(!pTicking && heroInView){
+        window.requestAnimationFrame(parallax);
+        pTicking = true;
+      }
+    }, {passive:true});
+  }
+
+  /* Floating CTA visibility (hidden while hero visible) */
+  var floatCta = document.getElementById('floatingCta');
+  if('IntersectionObserver' in window){
+    var heroIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        heroInView = entry.isIntersecting;
+        floatCta.classList.toggle('is-visible', !entry.isIntersecting);
+      });
+    }, {threshold:.1});
+    heroIo.observe(heroEl);
+  } else {
+    floatCta.classList.add('is-visible');
+  }
+
+  /* Service card tap highlight for touch devices */
+  document.querySelectorAll('.service-card').forEach(function(card){
+    card.addEventListener('touchstart', function(){
+      card.classList.add('is-active');
+      window.clearTimeout(card._t);
+      card._t = window.setTimeout(function(){ card.classList.remove('is-active'); }, 500);
+    }, {passive:true});
+  });
+
+  /* Opening hours: highlight today + open/closed status */
+  var HOURS = {
+    1: [["09:00","11:30"],["12:30","17:00"]],
+    2: [["09:00","11:30"],["12:30","16:00"]],
+    3: [["09:00","11:30"],["12:30","16:00"]],
+    4: [["09:00","11:30"],["12:30","18:00"]],
+    5: [["09:00","11:30"],["12:30","18:00"]],
+    6: [],
+    0: []
+  };
+  var now = new Date();
+  var todayIdx = now.getDay();
+  var todayCard = document.querySelector('.hour-card[data-day="' + todayIdx + '"]');
+  if(todayCard) todayCard.classList.add('is-today');
+
+  var mins = now.getHours() * 60 + now.getMinutes();
+  function toMin(str){ var p = str.split(':'); return parseInt(p[0],10) * 60 + parseInt(p[1],10); }
+  var isOpen = (HOURS[todayIdx] || []).some(function(range){
+    return mins >= toMin(range[0]) && mins <= toMin(range[1]);
+  });
+  var statusEl = document.getElementById('hoursStatus');
+  var statusText = document.getElementById('hoursStatusText');
+  statusEl.classList.toggle('is-open', isOpen);
+  statusText.textContent = isOpen ? 'Nyní otevřeno' : 'Nyní zavřeno';
+
+  /* Footer year */
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
